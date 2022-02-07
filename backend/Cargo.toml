@@ -6,3 +6,18 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+anyhow = "1"
+async-trait = "0.1"
+dataloader = { version = "0.14", default-features = false, features = [
+  "runtime-tokio"
+]}
+
+juniper = { git = "https://github.com/graphql-rust/juniper.git", branch = "master", package = "juniper" }
+juniper_warp = { git = "https://github.com/graphql-rust/juniper.git", branch = "master", package = "juniper_warp" }
+serde = { version = "1", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1"
+tracing-futures = "0.2"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json", "registry"] }
+ulid = { version = "0.4", features = ["serde"] }
+warp = "0.3"
