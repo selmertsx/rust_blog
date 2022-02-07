@@ -1,6 +1,8 @@
 use juniper::{ graphql_object, FieldError };
 use crate::context::{Context};
-use crate::graphql::object::{User, UserKind};
+use crate::graphql::object::{User };
+
+mod users;
 
 #[derive(Clone, Copy, Debug)]
 pub struct Query;
@@ -8,11 +10,7 @@ pub struct Query;
 #[graphql_object(context = Context)]
 impl Query {
     async fn users() -> Vec<User> {
-        vec![User {
-            id: 1,
-            kind: UserKind::Admin,
-            name: "user1".into(),
-        }]
+        users::query()
     }
 
     async fn request(url: String) -> Result<String, FieldError> {
