@@ -1,8 +1,6 @@
 use juniper::{ graphql_object, FieldError };
 use crate::context::{Context};
-
-mod user;
-use user::{User, UserKind};
+use crate::graphql::object::{User, UserKind};
 
 #[derive(Clone, Copy, Debug)]
 pub struct Query;

@@ -1,8 +1,11 @@
 use juniper::{ EmptyMutation, EmptySubscription, RootNode };
 
 use crate::context::{Context};
+
 mod query;
 use query::Query;
+
+pub mod object;
 
 type Schema = RootNode<'static, Query, EmptyMutation<Context>, EmptySubscription<Context>>;
 
