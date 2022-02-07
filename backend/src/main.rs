@@ -1,10 +1,8 @@
 //! This example demonstrates async/await usage with warp.
 
 use warp::{http::Response, Filter};
-
-#[derive(Clone, Copy, Debug)]
-struct Context;
-impl juniper::Context for Context {}
+mod context;
+pub use context::Context;
 
 mod graphql;
 use graphql::{ schema };
@@ -21,7 +19,7 @@ async fn main() {
             )
     });
 
-    let state = warp::any().map(|| graphql::Context);
+    let state = warp::any().map(|| Context);
     let graphql_filter = juniper_warp::make_graphql_filter(schema(), state.boxed());
 
     warp::serve(
