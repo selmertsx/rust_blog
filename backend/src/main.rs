@@ -1,75 +1,13 @@
 //! This example demonstrates async/await usage with warp.
 
-use juniper::{
-    graphql_object, EmptyMutation, EmptySubscription, FieldError, GraphQLEnum, RootNode,
-};
 use warp::{http::Response, Filter};
 
 #[derive(Clone, Copy, Debug)]
 struct Context;
 impl juniper::Context for Context {}
 
-#[derive(Clone, Copy, Debug, GraphQLEnum)]
-enum UserKind {
-    Admin,
-    User,
-    Guest,
-}
-
-#[derive(Clone, Debug)]
-struct User {
-    id: i32,
-    kind: UserKind,
-    name: String,
-}
-
-#[graphql_object(context = Context)]
-impl User {
-    fn id(&self) -> i32 {
-        self.id
-    }
-
-    fn kind(&self) -> UserKind {
-        self.kind
-    }
-
-    fn name(&self) -> &str {
-        &self.name
-    }
-
-    async fn friends(&self) -> Vec<User> {
-        vec![]
-    }
-}
-
-#[derive(Clone, Copy, Debug)]
-struct Query;
-
-#[graphql_object(context = Context)]
-impl Query {
-    async fn users() -> Vec<User> {
-        vec![User {
-            id: 1,
-            kind: UserKind::Admin,
-            name: "user1".into(),
-        }]
-    }
-
-    /// Fetch a URL and return the response body text.
-    async fn request(url: String) -> Result<String, FieldError> {
-        Ok(reqwest::get(&url).await?.text().await?)
-    }
-}
-
-type Schema = RootNode<'static, Query, EmptyMutation<Context>, EmptySubscription<Context>>;
-
-fn schema() -> Schema {
-    Schema::new(
-        Query,
-        EmptyMutation::<Context>::new(),
-        EmptySubscription::<Context>::new(),
-    )
-}
+mod user;
+use user::{ schema };
 
 #[tokio::main]
 async fn main() {
@@ -83,7 +21,7 @@ async fn main() {
             )
     });
 
-    let state = warp::any().map(|| Context);
+    let state = warp::any().map(|| user::Context);
     let graphql_filter = juniper_warp::make_graphql_filter(schema(), state.boxed());
 
     warp::serve(
