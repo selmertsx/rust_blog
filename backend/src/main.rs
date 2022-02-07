@@ -6,8 +6,8 @@ use warp::{http::Response, Filter};
 struct Context;
 impl juniper::Context for Context {}
 
-mod user;
-use user::{ schema };
+mod graphql;
+use graphql::{ schema };
 
 #[tokio::main]
 async fn main() {
@@ -21,7 +21,7 @@ async fn main() {
             )
     });
 
-    let state = warp::any().map(|| user::Context);
+    let state = warp::any().map(|| graphql::Context);
     let graphql_filter = juniper_warp::make_graphql_filter(schema(), state.boxed());
 
     warp::serve(
