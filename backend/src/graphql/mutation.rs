@@ -20,8 +20,8 @@ pub struct Mutation;
 impl Mutation {
     #[graphql(description = "Userを更新する")]
     async fn user_name_change(
-        ctx: &Context,
-        input: UserChangeNameInput,
+        _ctx: &Context,
+        _input: UserChangeNameInput,
     ) -> Result<UserChangeNameOutput, Error> {
         Ok(
             UserChangeNameOutput{ 
