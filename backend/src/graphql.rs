@@ -6,6 +6,7 @@ mod query;
 use query::Query;
 
 pub mod object;
+pub mod repository;
 
 type Schema = RootNode<'static, Query, EmptyMutation<Context>, EmptySubscription<Context>>;
 
