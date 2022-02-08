@@ -1,5 +1,5 @@
 use crate::Context;
-use crate::graphql::object::{ User, UserKind };
+use crate::graphql::object::User;
 use crate::graphql::error::Error;
 
 mod user_name_change;
