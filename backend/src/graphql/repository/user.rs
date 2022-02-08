@@ -29,4 +29,8 @@ impl UserRepository {
             }
         ]
     }
+
+    pub fn upsert(&self, user: User) -> User {
+        user
+    }
 }

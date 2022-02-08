@@ -2,6 +2,8 @@ use crate::Context;
 use crate::graphql::object::{ User, UserKind };
 use crate::graphql::error::Error;
 
+mod user_name_change;
+
 #[derive(Debug, juniper::GraphQLInputObject)]
 pub struct UserChangeNameInput {
     pub id: juniper::ID,
@@ -21,15 +23,9 @@ impl Mutation {
     #[graphql(description = "Userを更新する")]
     async fn user_name_change(
         _ctx: &Context,
-        _input: UserChangeNameInput,
+        input: UserChangeNameInput,
     ) -> Result<UserChangeNameOutput, Error> {
-        Ok(
-            UserChangeNameOutput{ 
-                user: User {
-                    id: 1,
-                    kind: UserKind::Admin,
-                    name: "user1".into(),
-                } 
-            })
+        let res = user_name_change::query(input.id);
+        Ok(UserChangeNameOutput { user: res })
     }
 }
