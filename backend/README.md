@@ -23,3 +23,10 @@ Type "help" for help.
 
 sample_service=#
 ```
+
+## diesel cli install
+
+```
+// default では mysql等のpluginも求められてしまうので、postgresのみinstallさせる。
+$ cargo install diesel_cli --no-default-features --features postgres
+```
