@@ -1,7 +1,7 @@
 use crate::graphql::object::{ User, UserKind };
 use crate::graphql::repository::UserRepository;
 
-pub fn query(_id: juniper::ID) -> User {
+pub fn mutate(_id: juniper::ID) -> User {
     let repository = UserRepository::new();
     let user = User {
         id: 2,

@@ -25,7 +25,7 @@ impl Mutation {
         _ctx: &Context,
         input: UserChangeNameInput,
     ) -> Result<UserChangeNameOutput, Error> {
-        let res = user_name_change::query(input.id);
+        let res = user_name_change::mutate(input.id);
         Ok(UserChangeNameOutput { user: res })
     }
 }
