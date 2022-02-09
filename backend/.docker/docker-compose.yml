@@ -1,16 +1,7 @@
 version: '3'
 services:
-  backend:
-    build: .
-    container_name: rust_sample_backend
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./:/app
-    tty: true
-
   postgres:
-    build: ./.docker/postgres
+    build: ./postgres
     container_name: postgres_rust_sample
     tty: true
     restart: always
