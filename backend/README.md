@@ -1,3 +1,4 @@
+# 開発メモ
 ## postgres docker 環境構築
 
 ```
@@ -30,3 +31,8 @@ sample_service=#
 // default では mysql等のpluginも求められてしまうので、postgresのみinstallさせる。
 $ cargo install diesel_cli --no-default-features --features postgres
 ```
+
+## 技術的な諸々
+
+Juniper + Warp + Diesel
+参考資料: https://github.com/mattdamon108/rust_graphql_api_boilerplate
