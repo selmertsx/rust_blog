@@ -3,6 +3,6 @@ FROM rust:1.58.0
 WORKDIR /app
 
 COPY . .
-RUN cargo build --release
+RUN cargo build
 
-ENTRYPOINT ["/app/target/release/backend"]
+ENTRYPOINT ["cargo", "run"]
