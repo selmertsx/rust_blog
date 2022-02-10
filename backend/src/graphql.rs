@@ -8,7 +8,7 @@ use query::Query;
 mod mutation;
 use mutation::Mutation;
 
-pub mod object;
+pub mod model;
 pub mod repository;
 
 mod error;

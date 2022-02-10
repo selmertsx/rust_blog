@@ -1,4 +1,4 @@
-use crate::graphql::object::{ User, UserKind };
+use crate::graphql::model::{ User, UserKind };
 use crate::graphql::repository::UserRepository;
 
 pub fn mutate(_id: juniper::ID) -> User {

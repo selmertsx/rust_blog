@@ -1,6 +1,6 @@
 use juniper::{ graphql_object, FieldError };
 use crate::context::{Context};
-use crate::graphql::object::{User};
+use crate::graphql::model::{User};
 
 mod users;
 mod user;

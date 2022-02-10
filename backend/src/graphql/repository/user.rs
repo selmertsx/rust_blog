@@ -1,4 +1,4 @@
-use crate::graphql::object::{User, UserKind};
+use crate::graphql::model::{User, UserKind};
 
 pub struct UserRepository;
 

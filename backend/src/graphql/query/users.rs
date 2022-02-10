@@ -1,5 +1,5 @@
 
-use crate::graphql::object::User;
+use crate::graphql::model::User;
 use crate::graphql::repository::UserRepository;
 
 pub fn query() -> Vec<User> {
