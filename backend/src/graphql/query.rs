@@ -1,9 +1,10 @@
 use juniper::{ graphql_object, FieldError };
 use crate::context::{Context};
-use crate::graphql::model::{User};
+use crate::graphql::model::{User, Post};
 
 mod users;
 mod user;
+mod post;
 
 #[derive(Clone, Copy, Debug)]
 pub struct Query;
@@ -16,6 +17,10 @@ impl Query {
 
     async fn user(id: juniper::ID) -> User {
         user::query(id)
+    }
+
+    async fn post() -> Post {
+        post::query()
     }
 
     async fn request(url: String) -> Result<String, FieldError> {
