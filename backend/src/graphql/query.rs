@@ -19,8 +19,8 @@ impl Query {
         user::query(id)
     }
 
-    async fn post() -> Post {
-        post::query()
+    async fn post(id: juniper::ID) -> Post {
+        post::query(id)
     }
 
     async fn request(url: String) -> Result<String, FieldError> {
