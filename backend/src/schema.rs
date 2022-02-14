@@ -1,7 +1,7 @@
 table! {
     posts (id) {
-        id -> Int4,
-        user_id -> Int4,
+        id -> Varchar,
+        user_id -> Varchar,
         title -> Varchar,
         body -> Nullable<Text>,
     }
@@ -9,7 +9,7 @@ table! {
 
 table! {
     users (id) {
-        id -> Int4,
+        id -> Varchar,
         name -> Varchar,
         email -> Varchar,
     }

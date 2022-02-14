@@ -1,12 +1,12 @@
 CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
+  id VARCHAR(26) PRIMARY KEY,
   name VARCHAR NOT NULL,
   email VARCHAR NOT NULL UNIQUE
 );
 
 CREATE TABLE posts (
-  id SERIAL PRIMARY KEY,
-  user_id integer NOT NULL,
+  id VARCHAR(26) PRIMARY KEY,
+  user_id VARCHAR NOT NULL,
   title VARCHAR NOT NULL,
   body TEXT
 );
